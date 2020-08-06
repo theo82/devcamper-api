@@ -99,4 +99,4 @@ const BootcampSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Boocamp', BootcampSchema);
+module.exports = mongoose.model('Bootcamp', BootcampSchema);

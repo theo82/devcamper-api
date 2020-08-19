@@ -3,7 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const User = require('../models/User');
 
 // @desc       Get all user
-// @route      GET /api/v1/auth/register
+// @route      POST /api/v1/auth/register
 // @access     Public
 exports.register = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body;
@@ -16,5 +16,8 @@ exports.register = asyncHandler(async (req, res, next) => {
     role,
   });
 
-  res.status(200).json({ success: true });
+  // Create token
+  const token = user.getSignedJwtToken();
+
+  res.status(200).json({ success: true, token });
 });

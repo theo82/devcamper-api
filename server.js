@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 const fileUpload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './config/config.env' });
 
@@ -19,8 +20,11 @@ const auth = require('./routes/auth');
 
 const app = express();
 
-//Body parser
+// Body parser
 app.use(express.json());
+
+// Cookie Parser
+app.use(cookieParser());
 
 // Dev loggin middleware
 if (process.env.NODE_ENV === 'development') {
